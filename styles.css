@@ -952,6 +952,7 @@ input::placeholder {
 }
 
 /* Laptop / Desktop (>860px) */
+/* Laptop / Desktop (>860px) */
 @media (min-width: 861px) {
   .header-inner {
     gap: 30px;
@@ -964,6 +965,89 @@ input::placeholder {
   .section-title::before,
   .section-title::after {
     flex: 1 1 auto;
+  }
+
+  /* Desktop results responsive */
+  .vehicle-table {
+    font-size: 14px;
+  }
+
+  .vehicle-table th,
+  .vehicle-table td {
+    padding: 16px;
+    font-size: 14px;
+  }
+
+  .fines-table {
+    font-size: 14px;
+  }
+
+  .fines-table th,
+  .fines-table td {
+    padding: 14px 16px;
+    font-size: 13px;
+  }
+
+  .fines-table img {
+    max-width: 80px;
+  }
+
+  .results-header {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .emetra-image {
+    flex: 1;
+  }
+
+  .emetra-logo {
+    max-width: 300px;
+  }
+
+  .btn-back {
+    width: auto;
+    min-width: 140px;
+  }
+
+  .results-title {
+    font-size: 18px;
+  }
+
+  .results-title .hint {
+    font-size: 14px;
+  }
+
+  .toast {
+    padding: 24px 28px;
+    font-size: 15px;
+    margin: 30px 0;
+    border-radius: 16px;
+  }
+
+  .total-section {
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .modal-content {
+    max-width: 500px;
+    padding: 20px;
+  }
+
+  .modal-image {
+    max-height: 400px;
+  }
+
+  .loading-content {
+    padding: 40px;
+    max-width: 300px;
+  }
+
+  .spinner {
+    width: 48px;
+    height: 48px;
   }
 }
 
@@ -988,6 +1072,84 @@ input::placeholder {
   .section-title::before,
   .section-title::after {
     min-width: 0;
+  }
+
+  /* Tablet results responsive */
+  .vehicle-table {
+    font-size: 13px;
+  }
+
+  .vehicle-table th,
+  .vehicle-table td {
+    padding: 11px;
+    font-size: 12px;
+  }
+
+  .fines-table {
+    font-size: 13px;
+  }
+
+  .fines-table th,
+  .fines-table td {
+    padding: 11px;
+    font-size: 12px;
+  }
+
+  .fines-table img {
+    max-width: 70px;
+  }
+
+  .results-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .emetra-logo {
+    max-width: 280px;
+  }
+
+  .btn-back {
+    width: 100%;
+  }
+
+  .results-title {
+    font-size: 17px;
+  }
+
+  .results-title .hint {
+    font-size: 13px;
+  }
+
+  .toast {
+    padding: 18px 24px;
+    font-size: 13px;
+    margin: 24px 0;
+    border-radius: 15px;
+  }
+
+  .total-section {
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .modal-content {
+    max-width: 450px;
+    padding: 18px;
+  }
+
+  .modal-image {
+    max-height: 380px;
+  }
+
+  .loading-content {
+    padding: 36px 24px;
+    max-width: 320px;
+  }
+
+  .spinner {
+    width: 44px;
+    height: 44px;
   }
 }
 
@@ -1090,6 +1252,98 @@ input::placeholder {
   .emetra-logo {
     max-width: 250px;
   }
+
+  /* Responsive tables for mobile */
+  .vehicle-table {
+    font-size: 12px;
+  }
+
+  .vehicle-table th {
+    padding: 10px;
+    font-size: 11px;
+  }
+
+  .vehicle-table td {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .results-content {
+    margin-bottom: 20px;
+  }
+
+  .fines-table {
+    font-size: 12px;
+  }
+
+  .fines-table th {
+    padding: 10px;
+    font-size: 11px;
+  }
+
+  .fines-table td {
+    padding: 8px 10px;
+    font-size: 10px;
+    word-break: break-word;
+  }
+
+  .fines-table img {
+    max-width: 60px;
+  }
+
+  .results-title {
+    font-size: 16px;
+    margin-top: 16px;
+  }
+
+  .results-title .hint {
+    font-size: 12px;
+    display: block;
+  }
+
+  .toast {
+    padding: 16px 20px;
+    font-size: 13px;
+    margin: 20px 0;
+    border-radius: 14px;
+  }
+
+  .toast p {
+    margin: 6px 0;
+    font-size: 13px;
+  }
+
+  .toast p:first-child {
+    font-size: 14px;
+  }
+
+  .total-section {
+    padding: 12px 10px;
+    font-size: 14px;
+  }
+
+  .modal-content {
+    max-width: 400px;
+    padding: 16px;
+  }
+
+  .modal-image {
+    max-height: 350px;
+  }
+
+  .loading-content {
+    padding: 30px 20px;
+    max-width: 280px;
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+  }
+
+  .loading-content p {
+    font-size: 13px;
+  }
 }
 
 /* Small Mobile (<= 600px) */
@@ -1176,5 +1430,87 @@ input::placeholder {
   .footer-note {
     font-size: 11px;
     padding-top: 15px;
+  }
+
+  /* Small mobile results responsive */
+  .vehicle-table {
+    font-size: 10px;
+  }
+
+  .vehicle-table th,
+  .vehicle-table td {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+
+  .fines-table {
+    font-size: 10px;
+  }
+
+  .fines-table th,
+  .fines-table td {
+    padding: 6px 8px;
+    font-size: 9px;
+  }
+
+  .fines-table img {
+    max-width: 50px;
+  }
+
+  .results-title {
+    font-size: 14px;
+  }
+
+  .results-title .hint {
+    font-size: 11px;
+  }
+
+  .toast {
+    padding: 12px 16px;
+    font-size: 12px;
+    margin: 15px 0;
+    border-radius: 12px;
+  }
+
+  .toast p {
+    margin: 4px 0;
+    font-size: 12px;
+  }
+
+  .toast p:first-child {
+    font-size: 13px;
+  }
+
+  .total-section {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+
+  .modal-content {
+    max-width: 90%;
+    padding: 14px;
+  }
+
+  .modal-image {
+    max-height: 300px;
+  }
+
+  .loading-content {
+    padding: 24px 16px;
+    max-width: 90%;
+  }
+
+  .spinner {
+    width: 36px;
+    height: 36px;
+  }
+
+  .btn-back {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .emetra-logo {
+    max-width: 200px;
   }
 }
