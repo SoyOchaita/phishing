@@ -298,6 +298,33 @@ a {
   width: 100%;
   overflow-x: auto;
   animation: slideInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+  border-radius: 4px;
+}
+
+/* Custom scrollbar for results content */
+.results-content::-webkit-scrollbar {
+  height: 8px;
+}
+
+.results-content::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+
+.results-content::-webkit-scrollbar-thumb {
+  background: #030e9e;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.results-content::-webkit-scrollbar-thumb:hover {
+  background: #83bd3f;
+}
+
+/* Firefox scrollbar */
+.results-content {
+  scrollbar-color: #030e9e #f0f0f0;
+  scrollbar-width: thin;
 }
 
 .vehicle-table {
@@ -489,6 +516,40 @@ a {
   font-weight: 500;
   font-size: 14px;
   opacity: 0.95;
+}
+
+/* Fines content wrapper with horizontal scroll */
+.fines-content {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+/* Custom scrollbar styling - Same as results-content */
+.fines-content::-webkit-scrollbar {
+  height: 8px;
+}
+
+.fines-content::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+
+.fines-content::-webkit-scrollbar-thumb {
+  background: #030e9e;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.fines-content::-webkit-scrollbar-thumb:hover {
+  background: #83bd3f;
+}
+
+/* Firefox scrollbar */
+.fines-content {
+  scrollbar-color: #030e9e #f0f0f0;
+  scrollbar-width: thin;
 }
 
 /* Fines table */
