@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="application-name" content="Pagina oficial Municipalidad de Guatemala" />
+  <meta name="author" content="EMETRA" />
+  <meta name="description" content="Consulta de Remisiones EMETRA" />
+  <meta name="keywords" content="emetra, multas emetra, consulta de remisiones, remisiones emetra" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Municipalidad de Guatemala</title>
+</head>
+<body class="page">
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-wrap">
+        <div class="logo-badge">
+          <img src="img/muniguate.png" alt="Escudo Municipalidad de Guatemala" class="logo-img" />
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">Muni</span>
+          <span class="logo-sub">Guate</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <a class="btn" href="https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/1996/gtdcx130-1996.pdf">Ley de Transito</a>
+        <a class="btn" href="https://www.congreso.gob.gt/assets/uploads/info_legislativo/acuerdos/1998/gtagx2731998.pdf">Reglamento de Transito</a>
+        <div class="dropdown">
+          <button class="btn dropdown-toggle" type="button">Otros Servicios</button>
+          <ul class="dropdown-menu">
+            <li><a href="">Solvencia</a></li>
+            <li><a href="">Pagos</a></li>
+            <li><a href="">Predice</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section-title">
+
+      <p>CONSULTA REMISIONES</p>
+
+    </section>
+
+    <section class="consulta" id="consulta-section">
+      <div class="police">
+        <img src="img/policia.png" alt="Policia" width="265" height="140" class="police-img" />
+      </div>
+
+      <form class="form" id="remisiones" novalidate>
+        <div class="field">
+          <label for="tplaca">Tipo Placa</label>
+          <select id="tplaca" name="tplaca">
+            <option selected>P</option>
+            <option value="C">C</option>
+            <option value="M">M</option>
+            <option value="A">A</option>
+            <option value="U">U</option>
+            <option value="CD">CD</option>
+            <option value="MI">MI</option>
+            <option value="DIS">DIS</option>
+            <option value="O">O</option>
+            <option value="CC">CC</option>
+            <option value="E">E</option>
+            <option value="EXT">EXT</option>
+            <option value="TC">TC</option>
+            <option value="TRC">TRC</option>
+          </select>
+        </div>
+        <div class="field wide">
+          <label for="nplaca">Numero de placa</label>
+          <input id="nplaca" name="nplaca" type="text" maxlength="6" placeholder="PLACA" />
+          <span class="error" id="placa-error" aria-live="polite"></span>
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">CONSULTAR</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="results" id="results" style="display: none;">
+      <div class="results-wrapper">
+        <!-- Imagen EMETRA con botón Regresar -->
+        <div class="results-header">
+          <div class="emetra-image">
+            <img src="img/emetra.png" alt="EMETRA" class="emetra-logo" />
+          </div>
+          <button class="btn-back" id="btnBack" type="button">← Regresar</button>
+        </div>
+
+        <!-- Información del vehículo -->
+        <div class="results-content">
+          <h2 class="results-title">Información del vehículo</h2>
+          <table class="vehicle-table">
+            <thead>
+              <tr>
+                <th>Placa</th>
+                <th>Marca</th>
+                <th>Color</th>
+                <th>Modelo</th>
+              </tr>
+            </thead>
+            <tbody id="results-body">
+              <!-- Los resultados se insertarán aquí -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Toast sin multas -->
+        <div class="toast" id="no-fines-toast" style="display: none;">
+          <p>No tiene multas pendientes.</p>
+          <p>Gracias por usar nuestro servicio.</p>
+        </div>
+
+        <!-- Tabla de multas -->
+        <div class="fines-section" id="fines-section" style="display: none;">
+          <h2 class="results-title">De tránsito <span class="hint">(haga clic en el nombre del lugar para ver detalles)</span></h2>
+          <table class="fines-table">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Lugar</th>
+                <th>Motivo</th>
+                <th>Imagen</th>
+              </tr>
+            </thead>
+            <tbody id="fines-body">
+              <!-- Las multas se insertarán aquí -->
+            </tbody>
+          </table>
+          <div class="total-section" id="total-section"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-title">
+
+      <p>BUSCANOS MUNIGUATE</p>
+
+    </section>
+
+    <!-- Modal de cargando -->
+    <div class="modal-loading" id="loadingModal">
+      <div class="loading-content">
+        <div class="spinner"></div>
+        <p>Consultando información...</p>
+      </div>
+    </div>
+
+    <!-- Modal para imagen -->
+    <div class="modal" id="imageModal">
+      <div class="modal-content">
+        <button class="modal-close" type="button" aria-label="Cerrar modal">&times;</button>
+        <div class="modal-body">
+          <img src="" alt="Foto de multa" id="modalImage" class="modal-image" />
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-block">
+          <h3>Redes Sociales</h3>
+          <div class="icon-row">
+            <button class="icon-card" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 0 1 7.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 0 1 1.06 0Z" />
+              </svg>
+              <span>Facebook</span>
+            </button>
+            <button class="icon-card" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+              </svg>
+              <span>Twitter</span>
+            </button>
+            <button class="icon-card" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+              </svg>
+              <span>You Tube</span>
+            </button>
+            <button class="icon-card" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
+              </svg>
+              <span>Instagram</span>
+            </button>
+          </div>
+        </div>
+        <div class="footer-block">
+          <h3>Contactanos</h3>
+          <div class="icon-row">
+            <button class="icon-card" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+              </svg>
+              <span>1551 Call Center</span>
+            </button>
+            <button class="icon-card" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z" />
+              </svg>
+              <span>123 Bomberos</span>
+            </button>
+            <button class="icon-card" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0 1 20.25 6v12A2.25 2.25 0 0 1 18 20.25H6A2.25 2.25 0 0 1 3.75 18V6A2.25 2.25 0 0 1 6 3.75h1.5m9 0h-9" />
+              </svg>
+              <span>Directorio</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-note">
+        <p>21 Calle 6-77 Zona 1, Centro Civico, Palacio Municipal. Ciudad de Guatemala, Guatemala, Centroamerica.</p>
+        <p>powered by I2+Desarrollo, Municipalidad de Guatemala</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
